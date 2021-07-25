@@ -9,6 +9,11 @@ class PlaceController extends Controller
 {
     use RateableTrate;
 
+    public function __construct()
+    {
+        $this->middleware('isOwner', ['only' => 'create', 'store']);
+    }
+
     public function index()
     {
         $places = Place::orderBy('view_count', 'desc')->take(3)->get();

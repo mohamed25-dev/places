@@ -9,8 +9,12 @@ class LikeController extends Controller
 {
     public function store (Request $request)
     {
-        auth()->user()->likes()->toggle($request->review_id);
+        $review = Review::find($request->review_id);
+        if ( $request->user()->can('like-review', $review)) {
+            auth()->user()->likes()->toggle($request->review_id);
+            return Review::find($request->review_id)->likes()->count();
+        }
 
-        return Review::find($request->review_id)->likes()->count();
+        
     }
 }

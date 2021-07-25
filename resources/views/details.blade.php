@@ -117,10 +117,18 @@
 
                               <div class="mt-3">
                                   @auth
-                                  <button id="like" type="button" data-id="{{$review->id}}" class="border rounded p-1 text-xs like">
-                                      {!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small> إلغاء الإعجاب </small>' : '<i class="fa fa-thumbs-up"></i><small> أعجبني </small>' !!}
-                                      <span>{{ $review->likes_count }}</span>
-                                  </button>
+                                  @can('like-review', $review)
+                                    <button id="like" type="button" data-id="{{$review->id}}" class="border rounded p-1 text-xs like">
+                                        {!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small> إلغاء الإعجاب </small>' : '<i class="fa fa-thumbs-up"></i><small> أعجبني </small>' !!}
+                                        <span>{{ $review->likes_count }}</span>
+                                    </button>    
+                                  @else
+                                  <button type="button" data-id="{{$review->id}}" class="border rounded p-1 text-xs">
+                                    {!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small> إلغاء الإعجاب </small>' : '<i class="fa fa-thumbs-up"></i><small> أعجبني </small>' !!}
+                                    <span>{{ $review->likes_count }}</span>
+                                </button>
+                                  @endcan
+                                  
                                   @else
                                       <span class="border rounded text-xs p-1"><i class="fa fa-thumbs-up"></i> {{ $review->likes_count }}</span>
                                   @endauth                                 
