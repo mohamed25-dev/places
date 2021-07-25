@@ -6,15 +6,19 @@
                 placeholder="حدد العنوان">
             <div id="address-list"></div>
         </div>
-        <div class="w-6/12">
+
+        <div class="w-6/12" >
             <select class="p-1 mr-5 bg-gray-200 w-full rounded-md" name="category">
                 <option value="">حدد التصنيف </option>
                 @include('includes\category_list')
             </select>
         </div>
+        
         <div class="mr-5">
-            <button type="submit"
-                class="py-2 px-5 bg-gray-500 hover:bg-gray-400 text-white mr-5 rounded-md">بحث</button>
+            <button 
+                type="submit" class="py-2 px-5 bg-green-600 hover:bg-green-400 text-white mr-5 rounded-md">
+                بحث
+            </button>
         </div>
     </div>
 </form>
@@ -24,7 +28,7 @@
         <ul>
         @foreach($categories as $category)
         <li>
-            <a href="{{ route('category.show', $category->slug) }}" class="bg-green-800 hover:bg-gray-400"> {{ $category->title }}</a>    
+            <a href="{{ route('category.show', $category->slug) }}" class="bg-green-600 hover:bg-gray-400"> {{ $category->title }}</a>    
         </li>
         @endforeach 
         </ul>

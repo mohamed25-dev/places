@@ -85,3 +85,5 @@ unicode-bidi: plaintext;
 cursor:pointer;
 }
 
+select { direction: rtl; }
+select option {direction: rtl;}
