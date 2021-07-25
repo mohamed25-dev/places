@@ -35,8 +35,34 @@
           </div>
            @endforeach
         </div>
+        
+        <div class="ml-3">
+          <div id="mapid" style="height: 500px"></div>
+        </div>
       <div>
   @endif
   </div>
 
 </x-app-layout>
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script>
+    var longitude = {!! $places->pluck('longitude') !!}
+    var latitude = {!! $places->pluck('latitude') !!}
+
+    var map = L.map('mapid');
+    
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+
+    var markers = [];
+
+    for(var i=0; i < longitude.length ; i++) {
+        markers.push(new L.marker([latitude[i], longitude[i]]).addTo(map));
+    }
+
+    var group = new L.featureGroup(markers).getBounds();
+
+    map.fitBounds([
+        group
+    ]);
+</script>

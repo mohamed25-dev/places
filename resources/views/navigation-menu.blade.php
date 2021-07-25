@@ -25,7 +25,13 @@
                 </div>
             @endguest
             
-            @auth                    
+            @auth      
+            <div class="flex" style="width:70%">
+                <x-jet-nav-link href="{{route('place.create')}}">
+                    {{__('إنشاء موقع')}}
+                </x-jet-nav-link>
+            </div>              
+            
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
