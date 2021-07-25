@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LikeController;
@@ -34,7 +35,11 @@ Route::post('/search', [SearchController::class, 'search'])->name('search');
 
 Route::resource('report', ContactController::class);
 
+Route::get('/bookmark/{id}', [BookmarkController::class, 'bookmark'])->name('bookmark');
+Route::get('/bookmarks', [BookmarkController::class, 'getUserBookmarks'])->name('bookmarks');
+
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
+
 
 Route::get('/place/create', [PlaceController::class, 'create'])->name('place.create');
 Route::post('/place', [PlaceController::class, 'store'])->name('place.store');
