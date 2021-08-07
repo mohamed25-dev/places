@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
             'email' => "admin@gmail.com",
             'email_verified_at' => now(),
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'role_id' => 1
+            'role_id' => 1,
+            'profile_photo_path' => 'profile-photos/default.png'
         ]);
 
 
@@ -32,7 +33,8 @@ class UserSeeder extends Seeder
             'email' => "user@gmail.com",
             'email_verified_at' => now(),
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'role_id' => 1
+            'role_id' => 1,
+            'profile_photo_path' => 'profile-photos/default.png'
         ]);
 
         DB::table('users')->insert([
@@ -41,7 +43,8 @@ class UserSeeder extends Seeder
             'email' => "user2@gmail.com",
             'email_verified_at' => now(),
             'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'role_id' => 2
+            'role_id' => 2,
+            'profile_photo_path' => 'profile-photos/default.png'
         ]);
 
     }
